@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -23,8 +24,13 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
+        <div style={{ display: "flex"}}>
+          <Sidebar />
+          <div style={{ margin: "0 auto"}}>
+            <Outlet />
+          </div>
+        </div>
+       <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
