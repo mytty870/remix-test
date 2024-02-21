@@ -1,6 +1,10 @@
 import { json, useParams } from "@remix-run/react";
+import { LoaderFunctionArgs } from "react-router-dom";
 
-export async function loader({params}) {
+import invariant from "tiny-invariant";
+
+export async function loader({params}: LoaderFunctionArgs) {
+  invariant(params.id, "Missing contactId param");
   const books = [
     {
       id: 1,
